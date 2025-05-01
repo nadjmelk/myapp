@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إعادة تعيين كلمة المرور</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>إعادة تعيين كلمة المرور</h2>
+    <input type="text" id="resetUser" placeholder="الإيميل أو الهاتف"><br><br>
+    <button onclick="resetPassword()">إعادة تعيين</button>
+    <script>
+        function resetPassword() {
+            var user = document.getElementById('resetUser').value;
+            var storedUser = localStorage.getItem('username');
+            if (user === storedUser) {
+                var newPass = prompt('أدخل كلمة مرور جديدة:');
+                if (newPass) {
+                    localStorage.setItem('password', newPass);
+                    alert('تمت إعادة التعيين بنجاح.');
+                    window.location.href = 'login.html';
+                }
+            } else {
+                alert('المستخدم غير موجود.');
+            }
+        }
+    </script>
+</body>
+</html>
