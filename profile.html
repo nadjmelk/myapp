@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الملف الشخصي</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>الملف الشخصي</h2>
+    <p id="userInfo"></p>
+    <button onclick="backHome()">عودة للرئيسية</button>
+    <script>
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+        var user = localStorage.getItem('username');
+        document.getElementById('userInfo').innerText = 'اسم المستخدم: ' + user;
+        function backHome() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>
