@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>تسجيل الدخول</h2>
+    <input type="text" id="username" placeholder="الإيميل أو الهاتف"><br><br>
+    <input type="password" id="password" placeholder="كلمة المرور"><br><br>
+    <button onclick="login()">دخول</button>
+    <p><a href="register.html">إنشاء حساب</a> | <a href="reset.html">نسيت كلمة المرور؟</a></p>
+    <script>
+        function login() {
+            var user = document.getElementById('username').value;
+            var pass = document.getElementById('password').value;
+            var storedUser = localStorage.getItem('username');
+            var storedPass = localStorage.getItem('password');
+            if (!user || !pass) {
+                alert('يرجى ملء جميع الحقول.');
+                return;
+            }
+            if (user === storedUser && pass === storedPass) {
+                localStorage.setItem('loggedIn', 'true');
+                window.location.href = 'home.html';
+            } else {
+                alert('خطأ في اسم المستخدم أو كلمة المرور.');
+            }
+        }
+    </script>
+</body>
+</html>
