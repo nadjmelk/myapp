@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل جديد</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>تسجيل جديد</h2>
+    <input type="text" id="newUsername" placeholder="الإيميل أو الهاتف"><br><br>
+    <input type="password" id="newPassword" placeholder="كلمة المرور"><br><br>
+    <button onclick="register()">تسجيل</button>
+    <script>
+        function register() {
+            var newUser = document.getElementById('newUsername').value;
+            var newPass = document.getElementById('newPassword').value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var phoneRegex = /^\d{10,15}$/;
+            if (!newUser || !newPass) {
+                alert('يرجى ملء جميع الحقول.');
+                return;
+            }
+            if (!emailRegex.test(newUser) && !phoneRegex.test(newUser)) {
+                alert('أدخل إيميل أو هاتف صحيح.');
+                return;
+            }
+            localStorage.setItem('username', newUser);
+            localStorage.setItem('password', newPass);
+            alert('تم التسجيل بنجاح!');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
