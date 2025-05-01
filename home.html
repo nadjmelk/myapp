@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الرئيسية</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>مرحبًا بك في الصفحة الرئيسية</h2>
+    <button onclick="goProfile()">الملف الشخصي</button>
+    <button onclick="logout()">خروج</button>
+    <script>
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+        function goProfile() {
+            window.location.href = 'profile.html';
+        }
+        function logout() {
+            localStorage.setItem('loggedIn', 'false');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
